@@ -1,5 +1,5 @@
 import numpy as np
-from auralis.scorer import score_waveform
+from auralis import score_waveform
 
 def test_score_waveform_range():
     fake_audio = np.random.randn(16000).astype("float32")

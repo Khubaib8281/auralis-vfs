@@ -2,8 +2,8 @@ import torch
 import torchaudio
 from speechbrain.lobes.models.ECAPA_TDNN import ECAPA_TDNN
 import numpy as np
-from config import MODEL_DIR, DEVICE, N_MELS
-from preprocessing import waveform_to_mel
+from .config import MODEL_DIR, DEVICE, N_MELS
+from .processing import waveform_to_mel
 
 class ECAPAENCODER:
     def __init__(self):

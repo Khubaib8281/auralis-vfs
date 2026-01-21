@@ -1,7 +1,7 @@
 import numpy as np
 import torch
 import torchaudio
-from models.config import SAMPLE_RATE, DEVICE, N_MELS, TARGET_LEN
+from .models.config import SAMPLE_RATE, DEVICE, N_MELS, TARGET_LEN
 from pydub import AudioSegment
 import torch.nn.functional F
 
