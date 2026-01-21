@@ -9,7 +9,8 @@ description = "Objective vocal fatigue scoring from speech using ECAPA-TDNN-VHE 
 readme.md = "README.md"
 lisence = {text = "MIT"}
 authors = {
-    name = "Muhammad Khubaib Ahmad"
+    name = "Muhammad Khubaib Ahmad",
+    email = "muhammadkhubaibahmad854@gmail.com"
 }
 requires-python = ">=3.9"
 
