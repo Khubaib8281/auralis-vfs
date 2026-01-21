@@ -1,0 +1,32 @@
+from models.config import LOW_PERCENTILE, HIGH_PERCENTILE, FATIGUE_AXIS, REF_C_H
+import numpy as np
+from models.config import CONFIG
+
+C_h = np.load(REF_C_H)
+fatigue_axis = np.load(FATIGUE_AXIS)
+low = float(np.load(LOW_PERCENTILE)["arr_0"])
+high = float(np.load(HIGH_PERCENTILE)["arr_0"])
+
+def fatigue_score_0_to_100(embedding, C_h, fatigue_axis, raw_low, raw_high, method='sigmoid'):
+    raw = np.dot(C_h - embedding, fatigue_axis)
+
+    normalized = (raw - raw_low) / (raw_high - raw_low)
+
+    normalized = np.clip(normalized, -0.5, 1.05)
+
+    if method == "linear":
+        score = normalized * 100
+
+    elif method == "sigmoid":
+        midpoint = 0.5
+        scale = 0.25
+        score = 1 / (1 + np.exp(-(normalized - midpoint) / scale)) * 100
+
+    elif method == 'smooth_linear':
+        scale = 10
+        score = normalized * 100
+        score = 100 / (1 + np.exp(- (score - 50) / scale))
+    else:
+        raise ValueError("method must be 'linear', 'sigmoid', or 'smooth_linear'")
+
+    return float(np.clip(score, 0, 100))
