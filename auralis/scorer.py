@@ -1,13 +1,19 @@
 from models.config import LOW_PERCENTILE, HIGH_PERCENTILE, FATIGUE_AXIS, REF_C_H
 import numpy as np
+from .ecapa import ECAPAENCODER
 from models.config import CONFIG
+from pathlib import Path
+from .validators import validate_audio_file
+from .preprocessing import load_audio, AudioLoadError
 
 C_h = np.load(REF_C_H)
 fatigue_axis = np.load(FATIGUE_AXIS)
 low = float(np.load(LOW_PERCENTILE)["arr_0"])
 high = float(np.load(HIGH_PERCENTILE)["arr_0"])
 
-def fatigue_score_0_to_100(embedding, C_h, fatigue_axis, raw_low, raw_high, method='sigmoid'):
+_encoder = ECAPAENCODER()
+
+def score_emb(embedding, C_h, fatigue_axis, raw_low, raw_high, method='sigmoid'):
     raw = np.dot(C_h - embedding, fatigue_axis)
 
     normalized = (raw - raw_low) / (raw_high - raw_low)
@@ -30,3 +36,18 @@ def fatigue_score_0_to_100(embedding, C_h, fatigue_axis, raw_low, raw_high, meth
         raise ValueError("method must be 'linear', 'sigmoid', or 'smooth_linear'")
 
     return float(np.clip(score, 0, 100))
+
+def score_waveform(waveform: np.ndarray) -> float:
+    emb = _encoder.encode(waveform)
+
+    score = score_emb(emb, C_c=C_h, fatigue_axis=fatigue_axis, raw_low=low, raw_high=high)
+
+    return score
+
+def score_audio(path: str | Path) -> float:
+    path = Path(path)
+
+    validate_audio_file(path)
+
+    waveform = load_audio(path)
+    return score_waveform(waveform)
