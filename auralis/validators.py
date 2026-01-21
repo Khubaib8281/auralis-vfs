@@ -1,5 +1,5 @@
 import soundfile as sf
-from core.config import MAX_DURATION_SEC, MIN_DURATION_SEC, ALLOWED_EXTENSIONS
+from models.config import MAX_DURATION_SEC, MIN_DURATION_SEC, ALLOWED_EXTENSIONS
 
 class AudioValidationError(ValueError):
     pass
