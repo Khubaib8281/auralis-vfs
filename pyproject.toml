@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build_backend = "setuptools.build_meta"
+
+[project]
+name = "auralis-vfs"
+version = "0.1.0"
+description = "Objective vocal fatigue scoring from speech using ECAPA-TDNN-VHE embeddings"
+readme.md = "README.md"
+lisence = {text = "MIT"}
+authors = {
+    name = "Muhammad Khubaib Ahmad"
+}
+requires-python = ">=3.9"
+
+dependencies = [
+    "numpy>=1.23",
+    "torch>=2.2.2",
+    "torchaudio>=2.2.2",
+    "soundfile",
+    "scipy",
+    "pydub"
+]
+
+[project.urls]
+Homepage = "https://github.com/Khubaib01/auralis-vocal-fatigue"
+Paper = "https://doi.org/10.5281/zenodo.18305757"
