@@ -57,7 +57,7 @@ def load_audio(path: str) -> torch.Tensor:
 
     return waveform.float()
 
-def waveform_to_mel(waverform: torch.Tensor):
+def waveform_to_mel(waveform: torch.Tensor):
     mel = mel_transform(waveform.unsqueeze(0))
     mel = amp_to_db(mel)
     mel = mel.transpose(1, 2)

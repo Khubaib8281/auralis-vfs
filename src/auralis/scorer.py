@@ -40,7 +40,7 @@ def score_emb(embedding, C_h, fatigue_axis, raw_low, raw_high, method='sigmoid')
 def score_waveform(waveform: np.ndarray) -> float:
     emb = _encoder.encode(waveform)
 
-    score = score_emb(emb, C_c=C_h, fatigue_axis=fatigue_axis, raw_low=low, raw_high=high)
+    score = score_emb(emb, C_h=C_h, fatigue_axis=fatigue_axis, raw_low=low, raw_high=high)
 
     return score
 
