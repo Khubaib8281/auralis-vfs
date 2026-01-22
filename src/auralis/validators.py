@@ -21,8 +21,8 @@ def validate_audio_duration(filepath: str, max_duration: float = MAX_DURATION_SE
 
     return duration
 
-def validate_audio_file(file_path: str, original_filename: str):
-    ext = original_filename.lower().rsplit(".", 1)[-1]
+def validate_audio_file(file_path: str):
+    ext = file_path.lower().rsplit(".", 1)[-1]
     ext = "." + ext
 
     if ext not in ALLOWED_EXTENSIONS:
