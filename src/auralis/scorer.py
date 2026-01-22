@@ -4,7 +4,7 @@ from .ecapa import ECAPAENCODER
 from .config import CONFIG
 from pathlib import Path
 from .validators import validate_audio_file
-from .preprocessing import load_audio, AudioLoadError
+from .processing import load_audio, AudioLoadError
 
 C_h = np.load(REF_C_H)
 fatigue_axis = np.load(FATIGUE_AXIS)
