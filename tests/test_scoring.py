@@ -1,6 +1,14 @@
 import numpy as np
 from auralis.scorer import score_waveform, score_audio
 import soundfile as sf
+import warnings
+
+def pytest_configure():
+    warnings.filterwarnings(
+        "ignore", 
+        message = "builtin type SwigPy.* has no __module__ attribute",
+        category = DeprecationWarning,
+    )
 
 def test_score_waveform():
     fake_audio = np.random.randn(16000).astype("float32")
