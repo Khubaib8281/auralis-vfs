@@ -19,6 +19,7 @@ dependencies = [
     "torchaudio>=2.1.1",
     "soundfile",
     "scipy",
+    "speechbrain>=1.0.3"
     "pydub"
 ]
 

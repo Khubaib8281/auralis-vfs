@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-title: "Auralis: Vocal Fatigue Scoring Library"
+title: "Auralis-vfs: Vocal Fatigue Scoring Library"
 message: "If you use this software, please cite it."
 authors:
   - family-names: Ahmad
