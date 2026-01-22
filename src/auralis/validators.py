@@ -21,13 +21,18 @@ def validate_audio_duration(filepath: str, max_duration: float = MAX_DURATION_SE
 
     return duration
 
+
 def validate_audio_file(file_path: str):
-    ext = file_path.lower().rsplit(".", 1)[-1]
-    ext = "." + ext
+    path = Path(file_path)
+
+    if not path.exists():
+        raise AudioValidationError(f"Audio file does not exist: {file_path}")
+
+    ext = path.suffix.lower()
 
     if ext not in ALLOWED_EXTENSIONS:
         raise AudioValidationError(
-            f"Unsupported file type {ext}. Allowed formats are: " + ", ".join(ALLOWED_EXTENSIONS)
-            )
+            f"Unsupported file type {ext}. Allowed formats are: {', '.join(sorted(ALLOWED_EXTENSIONS))}"
+        )
 
-    validate_audio_duration(file_path)
+    validate_audio_duration(str(path))
