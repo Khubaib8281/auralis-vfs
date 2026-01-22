@@ -18,7 +18,7 @@ This library is designed for:
 
 **Cite our research:**
 
-> Khubaib. (2026). *Auralis VFS: Research-Grade Vocal Fatigue Scoring Library*. Zenodo. [https://doi.org/10.5281/zenodo.18305757](https://doi.org/10.5281/zenodo.18305757)
+> Ahmad, M. K. (2026). Modeling Vocal Fatigue as Embedding-Space Deviation Using Contrastively Trained ECAPA-TDNNs (0.1.0). Zenodo. https://doi.org/10.5281/zenodo.18305757
 
 ---
 
@@ -36,13 +36,7 @@ This library is designed for:
 ## Installation
 
 ```bash
-# From PyPI
 pip install auralis-vfs
-
-# Or from source (editable mode)
-git clone https://github.com/<your-username>/auralis-vfs.git
-cd auralis-vfs
-pip install -e .
 ```
 
 **Dependencies:**
@@ -85,6 +79,11 @@ audio_path = "path/to/speech_sample.wav"
 score = score_audio(audio_path)
 print(f"Vocal Fatigue Score: {score:.2f}")
 ```
+
+>## Audio Validation
+
+- Supported formats: .wav, .mp3, .m4a
+- Duration: 5–10 seconds recommended
 
 > Scores range from **0 (no fatigue)** to **100 (severe fatigue)**.
 
@@ -131,6 +130,23 @@ auralis-vfs/
 * Returns: Vocal Fatigue Score (float, 0–100).
 
 ---
+
+## Future Work
+
+Planned improvements to enhance auralis_vfs:
+
+- **Prosody Feature Integration** – Analyze pitch, energy, and speaking rate to enrich scoring.
+
+- **Clinical Report Generation** – Provide automatic reports resembling clinical assessments, including:
+
+    - Fatigue trends over time
+
+    - Prosody-based analysis
+
+    - Summary interpretation for voice health monitoring
+
+
+- **Web/API Interface** – Seamless integration with Gradio or FastAPI for cloud deployments.
 
 ## Contributors & Credits
 
