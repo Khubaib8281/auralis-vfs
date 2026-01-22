@@ -1,4 +1,3 @@
-# src/auralis/config.py
 from pathlib import Path
 import torch
 import yaml
