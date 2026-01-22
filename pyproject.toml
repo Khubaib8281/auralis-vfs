@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "auralis-vfs"
-version = "0.1.0"
+version = "1.0.0"
 description = "Objective vocal fatigue scoring from speech using ECAPA-TDNN-VHE embeddings"
 readme = "README.md"
 license = {text = "MIT"}
@@ -28,6 +28,15 @@ package-dir = { "" = "src" }
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.setuptools.package-data]
+auralis = [
+  "models/*.pth",
+  "models/*.yaml",
+  "data/*.npy",
+  "data/*.npz"
+]
+
 
 [project.urls]
 Homepage = "https://github.com/Khubaib8281/auralis-vfs"
