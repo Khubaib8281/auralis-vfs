@@ -1,5 +1,6 @@
 import soundfile as sf
 from .config import MAX_DURATION_SEC, MIN_DURATION_SEC, ALLOWED_EXTENSIONS
+from pathlib import Path
 
 class AudioValidationError(ValueError):
     pass
