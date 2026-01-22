@@ -1,7 +1,7 @@
-from .models.config import LOW_PERCENTILE, HIGH_PERCENTILE, FATIGUE_AXIS, REF_C_H
+from .config import LOW_PERCENTILE, HIGH_PERCENTILE, FATIGUE_AXIS, REF_C_H
 import numpy as np
 from .ecapa import ECAPAENCODER
-from .models.config import CONFIG
+from .config import CONFIG
 from pathlib import Path
 from .validators import validate_audio_file
 from .preprocessing import load_audio, AudioLoadError

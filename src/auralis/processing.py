@@ -1,9 +1,9 @@
 import numpy as np
 import torch
 import torchaudio
-from .models.config import SAMPLE_RATE, DEVICE, N_MELS, TARGET_LEN
+from .config import SAMPLE_RATE, DEVICE, N_MELS, TARGET_LEN
 from pydub import AudioSegment
-import torch.nn.functional F
+import torch.nn.functional as F
 
 mel_transform = torchaudio.transforms.MelSpectrogram(
     sample_rate = SAMPLE_RATE,
@@ -33,7 +33,7 @@ def load_audio(path: str) -> torch.Tensor:
             if samples.size == 0:
                 raise AudioLoadError("Empty audio file")
 
-            waveform = torch.from-numpy(samples)
+            waveform = torch.from_numpy(samples)
             sr = SAMPLE_RATE
         except Exception as e2:
             raise AudioLoadError(f"Failed to decode audio file: {str(e2)}") from e2
