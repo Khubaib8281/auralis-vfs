@@ -21,9 +21,12 @@ class ECAPAENCODER:
 
     @torch.no_grad()
     def encode(self, waveform):
-        if waveform.dim() == 2 and waveform.shape[0] == 1:
+        if isinstance(waveform, np.ndarray):
+            waveform = torch.from_numpy(waveform)
+            
+        if waveform.ndim == 2 and waveform.shape[0] == 1:
             waveform = waveform.squeeze(0)
-        if waveform.dim() != 1:
+        if waveform.ndim != 1:
             raise ValueError(f"Expected waveform [T], got {waveform.shape}")
 
         waveform = waveform.float().to(DEVICE)
