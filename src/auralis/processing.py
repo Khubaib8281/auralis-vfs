@@ -8,7 +8,7 @@ import torch.nn.functional as F
 mel_transform = torchaudio.transforms.MelSpectrogram(
     sample_rate = SAMPLE_RATE,
     n_mels = N_MELS,
-    nff_t = 400,
+    n_fft = 400,
     hop_length = 256,
     
 ).to(DEVICE)
