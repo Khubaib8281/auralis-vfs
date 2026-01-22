@@ -35,7 +35,10 @@ def score_emb(embedding, C_h, fatigue_axis, raw_low, raw_high, method='sigmoid')
     else:
         raise ValueError("method must be 'linear', 'sigmoid', or 'smooth_linear'")
 
-    return float(np.clip(score, 0, 100))
+    score  = np.clip(score, 0, 100)
+    if isinstance(score, np.ndarray):
+        score = score.item()
+    return float(score)
 
 def score_waveform(waveform: np.ndarray) -> float:
     emb = _encoder.encode(waveform)
