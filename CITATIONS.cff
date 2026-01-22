@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+title: "Auralis: Vocal Fatigue Scoring Library"
+message: "If you use this software, please cite it."
+authors:
+  - family-names: Ahmad
+    given-names: Muhammad Khubaib
+contributors:
+  - name: Faiez Ahmad
+    role: Data Manager
+  - name: Muhammad Anas Tariq
+    role: Data collector
+version: 0.1.0
