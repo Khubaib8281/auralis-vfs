@@ -24,7 +24,7 @@ def load_audio(path: str) -> torch.Tensor:
 
     try:
         waveform, sr = torchaudio.load(path)
-    except Execption as e1:
+    except Exception as e1:
         try:
             audio = AudioSegment.from_file(path)
             audio = audio.set_channels(1).set_frame_rate(SAMPLE_RATE)
