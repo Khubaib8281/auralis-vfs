@@ -32,6 +32,6 @@ class ECAPAENCODER:
         waveform = waveform.float().to(DEVICE)
         mel = waveform_to_mel(waveform)
 
-        print("ECAPA input shape: ", mel.shape)
+        # print("ECAPA input shape: ", mel.shape)
         emb = self.ecapa(mel)
         return emb.squeeze(0).cpu().numpy()

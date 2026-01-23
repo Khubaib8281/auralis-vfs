@@ -2,6 +2,7 @@ import numpy as np
 from auralis.scorer import score_waveform, score_audio
 import soundfile as sf
 import warnings
+from unittest.mock import patch
 
 def pytest_configure():
     warnings.filterwarnings(
@@ -31,3 +32,11 @@ def test_audio_score(tmp_path):
 
     assert isinstance(score, float)
     assert 0.0 <= score <= 100.0
+
+
+def test_score_audio_mocked():
+    with patch("auralis.processing.load_audio") as mock_load:
+        mock_load.return_value = (torch.randn(1, 16000), 16000)
+
+        score = score_audio("dummy.wav")
+        assert 0.0 <= score <= 100.0
