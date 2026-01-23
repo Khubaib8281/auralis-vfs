@@ -1,7 +1,7 @@
 torch==2.1.1
 torchaudio==2.1.1
 pydub
-numpy
+numpy>=1.26.4
 soundfile
 speechbrain>=1.0.3
 pathlib
